@@ -125,12 +125,14 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.mybatis.jpetstore.event;
+package org.mybatis.jpetstore.store;
 
-public interface IEvent {
-  String getItemId();
+import java.util.ArrayList;
 
-  int getAmount();
+import org.mybatis.jpetstore.event.IEvent;
 
-  int getAmountDiff();
+public interface IEventStore {
+  void appendToStream( ArrayList<IEvent> events);
+
+  ArrayList<IEvent> loadEventStream(String itemId);
 }
